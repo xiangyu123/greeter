@@ -1,0 +1,7 @@
+version: "3"
+services:
+  greeter:
+    container_name: "greeter"
+    image: greeter:latest
+    ports:
+     - "8083:8080"
