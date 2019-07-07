@@ -27,11 +27,11 @@ pipeline {
         stage('build_image') {
             steps {
                 sh """
-			        docker build --no-cache --force-rm=true -t greet-${env.JOB_NAME}:${env.BUILD_ID} .
-			        docker tag greet-${env.JOB_NAME}:${env.BUILD_ID} greet:latest
-                    delete_images=\$(docker images -f "dangling=true" -q)
-                    [[ ! -z "\${delete_images}" ]] && docker rmi -f \${delete_images} || echo "No images to delete"
-		        """
+                      docker build --no-cache --force-rm=true -t greet-${env.JOB_NAME}:${env.BUILD_ID} .
+                      docker tag greet-${env.JOB_NAME}:${env.BUILD_ID} greet:latest
+                      delete_images=\$(docker images -f "dangling=true" -q)
+                      [[ ! -z "\${delete_images}" ]] && docker rmi -f \${delete_images} || echo "No images to delete"
+                """
             }
         }
 
